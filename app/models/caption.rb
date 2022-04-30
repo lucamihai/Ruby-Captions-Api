@@ -1,0 +1,3 @@
+class Caption < ApplicationRecord
+  
+end
