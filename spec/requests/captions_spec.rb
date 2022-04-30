@@ -34,5 +34,27 @@ RSpec.describe "Captions", type: :request do
     end
   end
 
-  
+  describe "POST /captions" do
+    it "returns expected response" do
+      post '/captions', :params => '
+      {
+        "caption": {
+          "url": "http://image.url",
+          "text": "caption text"
+        }
+      }'
+
+      expect(response).to have_http_status(201)
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      expect(json_response).to eq(
+        {
+          caption: {
+            url: "http://image.url",
+            text: "caption text"
+          }
+        }
+      )
+    end
+  end
+
 end

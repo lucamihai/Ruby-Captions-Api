@@ -17,5 +17,7 @@ class CaptionsController < ApplicationController
     render json:  {captions: captions}
   end
 
-  
+  def create
+    render :json => request.body.read, :status => 201
+  end
 end
